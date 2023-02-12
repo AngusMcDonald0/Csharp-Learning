@@ -7,7 +7,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Reverse();
+            Unique();
         }
 
         public static void Likes()
@@ -30,7 +30,29 @@ namespace ConsoleApp1
 
         public static void Reverse()
         {
+            Console.WriteLine("Enter name: ");
+            var input = Console.ReadLine();
+            var array = input.ToCharArray();
+            Array.Reverse(array);
+            Console.WriteLine(new string(array));
+        }
 
+        public static void Unique()
+        {
+            var numbers = new List<int>(); 
+            while(numbers.Count < 5)
+            {
+                Console.WriteLine("Input a number: ");
+                var input = Convert.ToInt32(Console.ReadLine());
+                if (numbers.Contains(input))
+                {
+                    Console.WriteLine("Error: number already added, try again");
+                    continue;
+                }
+                numbers.Add(input);
+            }
+            numbers.Sort();
+            Console.WriteLine(String.Join(",", numbers));
         }
     }
 }
