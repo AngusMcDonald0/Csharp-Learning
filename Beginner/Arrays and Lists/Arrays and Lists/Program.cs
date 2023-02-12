@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ConsoleApp1
 {
@@ -37,7 +38,7 @@ namespace ConsoleApp1
             Console.WriteLine(new string(array));
         }
 
-        public static void Unique()
+        public static void Numbers()
         {
             var numbers = new List<int>(); 
             while(numbers.Count < 5)
@@ -53,6 +54,22 @@ namespace ConsoleApp1
             }
             numbers.Sort();
             Console.WriteLine(String.Join(",", numbers));
+        }
+
+        public static void Unique()
+        {
+            var numbers = new List<int>();
+            while (true)
+            {
+                Console.WriteLine("Enter a number: ");
+                var input = Console.ReadLine();
+                if (input == "quit") 
+                    break;
+                numbers.Add(Convert.ToInt32(input));
+            }
+            var unique = numbers.Distinct().ToList<int>();
+            foreach(var num in unique)
+                Console.WriteLine(num);
         }
     }
 }
