@@ -8,7 +8,7 @@ namespace String_Manipulation
     {
         static void Main(string[] args)
         {
-            Consecutive();
+            Duplicate();
         }
 
         public static void Consecutive()
@@ -27,6 +27,32 @@ namespace String_Manipulation
                     consecutive = false;
             }
             Console.WriteLine(consecutive ? "Consecutive" : "Non-Consecutive");
+        } 
+
+        public static void Duplicate()
+        {
+            Console.WriteLine("Enter a few - seperated numbers");
+            var input = Console.ReadLine();
+            if (String.IsNullOrWhiteSpace(input))
+                return;
+            var numbers = new List<int>();
+            foreach (var num in input.Split("-"))
+            {
+                numbers.Add(Convert.ToInt32(num));
+            }
+            var uniques = new List<int>();
+            foreach (var num in numbers)
+            {
+                if (uniques.Contains(num))
+                {
+                    Console.WriteLine("Duplicate");
+                    break;
+                }
+                else
+                {
+                    uniques.Add(num);
+                }
+            }
         }
     }
 }
