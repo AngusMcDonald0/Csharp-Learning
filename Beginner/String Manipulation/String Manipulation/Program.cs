@@ -8,7 +8,7 @@ namespace String_Manipulation
     {
         static void Main(string[] args)
         {
-            Duplicate();
+            PascalCase();
         }
 
         public static void Consecutive()
@@ -53,6 +53,21 @@ namespace String_Manipulation
                     uniques.Add(num);
                 }
             }
+        }
+
+        public static void Valid()
+        {
+            Console.WriteLine("Enter a time: ");
+            var input = Console.ReadLine();
+            if (TimeSpan.TryParse(input, out var result))
+                Console.WriteLine("passed");
+            else
+                Console.WriteLine("failed");
+        }
+
+        public static void PascalCase()
+        {
+
         }
     }
 }
