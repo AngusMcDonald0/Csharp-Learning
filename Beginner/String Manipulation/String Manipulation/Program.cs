@@ -8,7 +8,7 @@ namespace String_Manipulation
     {
         static void Main(string[] args)
         {
-            PascalCase();
+            Vowels();
         }
 
         public static void Consecutive()
@@ -84,6 +84,20 @@ namespace String_Manipulation
                 capitalizedText += capitalizedWord;
             }
             Console.WriteLine(capitalizedText);
+        }
+
+        public static void Vowels()
+        {
+            Console.WriteLine("Enter a word: ");
+            var input = Console.ReadLine();
+            var vowels = new List<char>{ 'a', 'e', 'i', 'o', 'u' };
+            var count = 0;
+            foreach (var letter in input)
+            {
+                if (vowels.Contains(letter))
+                    count ++;
+            }
+            Console.WriteLine(count);
         }
     }
 }
