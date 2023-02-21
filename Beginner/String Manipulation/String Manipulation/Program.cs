@@ -67,7 +67,23 @@ namespace String_Manipulation
 
         public static void PascalCase()
         {
+            Console.WriteLine("Enter a few words: ");
+            var input = Console.ReadLine();
 
+            if (String.IsNullOrWhiteSpace(input))
+            {
+                Console.WriteLine("Error");
+                return;
+            }
+
+            var words = input.Split(" ");
+            var capitalizedText = "";
+            foreach (var word in words)
+            {
+                var capitalizedWord = char.ToUpper(word[0]) + word.ToLower().Substring(1);
+                capitalizedText += capitalizedWord;
+            }
+            Console.WriteLine(capitalizedText);
         }
     }
 }
