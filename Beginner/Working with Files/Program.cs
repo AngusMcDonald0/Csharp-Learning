@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Working_with_Files
 {
@@ -6,7 +7,29 @@ namespace Working_with_Files
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            LongestWord();
+        }
+
+        static void Count()
+        {
+            var path = @"C:\Users\angus\source\repos\Csharp-Learning\Beginner\Working with Files\text file.txt";
+            var text = File.ReadAllText(path);
+            var words = text.Split(" ");
+            Console.WriteLine(words.Length);
+        }
+
+        static void LongestWord()
+        {
+            var path = @"C:\Users\angus\source\repos\Csharp-Learning\Beginner\Working with Files\text file.txt";
+            var text = File.ReadAllText(path);
+            var words = text.Split(" ");
+            var longestWord = "";
+            foreach (var word in words)
+            {
+                if (word.Length > longestWord.Length)
+                    longestWord = word;
+            }
+            Console.WriteLine(longestWord);
         }
     }
 }
