@@ -6,21 +6,19 @@ namespace StopWatch
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("stopwatch is ready: ");
-            var input = Console.ReadLine();
-
-            if (input == "start")
+            var input = "";
+            while (input != "exit")
             {
                 var stopWatch = new StopWatch();
-                stopWatch.startTime = DateTime.Now;
-                Console.WriteLine("Hit enter to stop");
-                var enter = Console.ReadLine();
-                if (enter == "")
-                {
-                    stopWatch.stopTime = DateTime.Now;
-                    var count = stopWatch.TimeElapsed();
-                    Console.WriteLine("Time elapsed:" + count);
-                }
+                Console.WriteLine("------StopWatch------");
+                Console.WriteLine("Press enter to start");
+                Console.ReadLine();
+                stopWatch.Start();
+                Console.WriteLine("Press enter to stop");
+                Console.ReadLine();
+                stopWatch.Stop();
+                Console.WriteLine("Time elapsed:" + stopWatch.TimeElapsed() + "\nType exit to quit or press enter to go again");
+                input = Console.ReadLine();
             }
         }
     }

@@ -8,13 +8,33 @@ namespace StopWatch
 {
     internal class StopWatch
     {
-        public DateTime startTime { get; set; }
-        public DateTime stopTime { get; set; }
+        private DateTime _startTime;
+        private DateTime _stopTime; 
+        private bool _running;
+
+        public void Start()
+        {
+            if (_running)
+            {
+                throw new InvalidOperationException("Stopwatch already running");
+            }
+            _startTime = DateTime.Now;
+            _running = true;
+        }
+
+        public void Stop()
+        {
+            if (!_running) 
+            {
+                throw new InvalidOperationException("Stopwatch not running");
+            }
+            _stopTime = DateTime.Now;
+            _running = false;
+        }
 
         public TimeSpan TimeElapsed() 
         {
-            var timeElapsed = stopTime - startTime;
-            return timeElapsed;
+            return _stopTime - _startTime;
         }
     }
 }
