@@ -37,6 +37,5 @@ namespace TestNinja.UnitTests
             
             Assert.That(result, Is.EqualTo("1"));
         }
-        
     }
 }
