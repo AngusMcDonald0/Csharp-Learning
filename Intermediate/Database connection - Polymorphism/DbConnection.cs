@@ -6,9 +6,21 @@ using System.Threading.Tasks;
 
 namespace Database_connection___Polymorphism
 {
-    internal class DbConnection
+    abstract internal class DbConnection
     {
-        public string? ConnectionString;
-        public TimeSpan Timeout;
+        private string? _connectionString;
+        private TimeSpan _timeout;
+        public bool connected;
+
+        public DbConnection(string connectionStr)
+        {
+            if (string.IsNullOrWhiteSpace(connectionStr))
+                throw new ArgumentNullException("A connection string is required");
+            _connectionString = connectionStr;
+        }
+
+        public abstract void Open();
+
+        public abstract void Close();
     }
 }
