@@ -6,16 +6,26 @@ using System.Threading.Tasks;
 
 namespace Workflow_Engine
 {
-    internal class WorkflowEngine
+    public class WorkflowEngine
     {
+        private readonly IList<IWorkflow> _workflows;
 
-        public void Run(Workflow workflow)
+        public WorkflowEngine()
         {
-            foreach (var step in workflow)
-            {
+            _workflows = new List<IWorkflow>();
+        }
 
+        public void Run()
+        {
+            foreach (var workflow in _workflows)
+            {
+                workflow.Execute();
             }
         }
 
+        public void AddWorkflow(IWorkflow workflow)
+        {
+            _workflows.Add(workflow);
+        }
     }
 }
